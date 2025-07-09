@@ -5,8 +5,8 @@ local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
 local Window = Rayfield:CreateWindow({
    Name = "Pressure Script",
    Icon = 0,
-   LoadingTitle = "Carregando Interface...",
-   LoadingSubtitle = "Preparando o script para Pressure",
+   LoadingTitle = "Loading...",
+   LoadingSubtitle = "Bullshit script, may work, may not, open source",
    Theme = "Default",
    DisableRayfieldPrompts = false,
    DisableBuildWarnings = false,
@@ -20,7 +20,7 @@ local vals = {
     NoLocalDamage = false,
     AntiSearchlights = false,
     Fullbright = false,
-    NoDeath = false, -- Variável para o No Death
+    NoDeath = false, -- not working
     NotifyMonsters = false,
     ESP_Currency = false,
     ESP_Keycard = false,
@@ -39,7 +39,7 @@ local HumanoidRootPart = character:WaitForChild("HumanoidRootPart")
 
 local searchlights = {}
 
--- --- Funções Auxiliares ---
+-- --- Damnn, i copied Thais from NullFire, Sorry damn, credits to NullFire ---
 
 local blockedRemoteObjects = {}
 
@@ -117,7 +117,7 @@ end
 
 -- Criar a aba "Entities"
 local EntitiesTab = Window:CreateTab("Entities", 4483362458)
-local EntitiesSection = EntitiesTab:CreateSection("Opções de Entidades")
+local EntitiesSection = EntitiesTab:CreateSection("Damn entities")
 
 -- Anti Searchlights
 EntitiesTab:CreateToggle({
@@ -135,7 +135,7 @@ EntitiesTab:CreateToggle({
 local monstrosDetectados = {}
 local nomesMonstros = {
     Angler = true, Pinkie = true, Chainsmoker = true,
-    Blitz = true, Pandemonium = true, Froger = true, A60 = true
+    Blitz = true, Pandemonium = true, Froger = true, A60 = true, RidgeAngler = true, RidgePinkie = true, RidgeChainsmoker = true, RidgeFroger = true, RidgePandemonium = true, RidgeBlitz = true
 }
 
 -- Armazenamento para ESPs
@@ -202,8 +202,8 @@ local function monitorarMonstros(obj)
     if obj:IsA("Part") and nomesMonstros[obj.Name] and not monstrosDetectados[obj] then
         monstrosDetectados[obj] = true
         Rayfield:Notify({
-            Title = "Monstro Detectado!",
-            Content = "Um " .. obj.Name .. " apareceu!",
+            Title = "Entity Spawn!",
+            Content = "A entity " .. obj.Name .. " apareceu!",
             Duration = 10
         })
 
@@ -246,7 +246,7 @@ EntitiesTab:CreateToggle({
 })
 
 EntitiesTab:CreateToggle({
-    Name = "Safe Teleport ao ver monstro",
+    Name = "Hide Lockerless",
     CurrentValue = vals.SafeTeleport,
     Callback = function(state)
         vals.SafeTeleport = state
@@ -261,11 +261,11 @@ EntitiesTab:CreateToggle({
 
 -- Criar a aba "Player"
 local PlayerTab = Window:CreateTab("Player", 4483362458)
-local PlayerSection = PlayerTab:CreateSection("Opções do Jogador")
+local PlayerSection = PlayerTab:CreateSection("Player")
 
 -- No Damage
 PlayerTab:CreateToggle({
-    Name = "No Damage",
+    Name = "No Damage (ReplicatedStorage, can Ban)",
     CurrentValue = vals.NoLocalDamage,
     Callback = function(state)
         vals.NoLocalDamage = state
@@ -278,9 +278,9 @@ PlayerTab:CreateToggle({
     end
 })
 
--- No Death - REVERIFICADO E COLOCADO AQUI
+-- No Death
 PlayerTab:CreateToggle({
-    Name = "Not working",
+    Name = "Not working - Old no Death",
     CurrentValue = vals.NoDeath,
     Callback = function(state)
         vals.NoDeath = state
@@ -343,7 +343,7 @@ local function highlightKeycard(obj)
 end
 -- Criar a aba "pAinTer"
 local pAinTerTab = Window:CreateTab("pAinTer", 4483362458)
-local pAinTerSection = pAinTerTab:CreateSection("Ferramentas")
+local pAinTerSection = pAinTerTab:CreateSection("Some shit")
 
 -- Fullbright
 pAinTerTab:CreateToggle({
@@ -394,7 +394,7 @@ pAinTerTab:CreateToggle({
 })
 
 -- Valor fixo do alcance da aura
-local AUTO_INTERACT_RANGE = 15
+local AUTO_INTERACT_RANGE = 30
 
 local RunService = game:GetService("RunService")
 local Workspace = game:GetService("Workspace")
@@ -434,7 +434,7 @@ end
 
 -- Toggle para ligar/desligar a aura automática
 pAinTerTab:CreateToggle({
-    Name = "Aura Auto Interact (alcance 15 studs)",
+    Name = "Aura Collect Currency and shit(may bug)",
     CurrentValue = false,
     Callback = function(state)
         autoInteractEnabled = state
