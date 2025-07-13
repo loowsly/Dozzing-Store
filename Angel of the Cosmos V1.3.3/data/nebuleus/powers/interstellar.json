@@ -1,0 +1,87 @@
+{
+    "type": "origins:attribute",
+    "modifiers": [
+		{
+            "attribute": "attributeslib:arrow_damage",
+            "value": -1,
+            "operation": "multiply_total"
+        },
+		{
+            "attribute": "attributeslib:arrow_velocity",
+            "value": -1,
+            "operation": "multiply_total"
+        },
+		{
+            "attribute": "irons_spellbooks:blood_magic_resist",
+            "value": -0.1,
+            "operation": "multiply_total"
+        },
+		{
+            "attribute": "irons_spellbooks:blood_spell_power",
+            "value": -0.1,
+            "operation": "multiply_total"
+        },
+		{
+            "attribute": "irons_spellbooks:eldritch_magic_resist",
+            "value": -0.1,
+            "operation": "multiply_total"
+        },
+		{
+            "attribute": "irons_spellbooks:eldritch_spell_power",
+            "value": -0.1,
+            "operation": "multiply_total"
+        },
+		{
+            "attribute": "irons_spellbooks:ender_magic_resist",
+            "value": 0.25,
+            "operation": "multiply_total"
+        },
+		{
+            "attribute": "irons_spellbooks:ender_spell_power",
+            "value": 0.25,
+            "operation": "multiply_total"
+        },
+		{
+            "attribute": "irons_spellbooks:evocation_magic_resist",
+            "value": -0.25,
+            "operation": "multiply_total"
+		},
+		{
+            "attribute": "irons_spellbooks:evocation_spell_power",
+            "value": -0.25,
+            "operation": "multiply_total"
+		},
+		{
+            "attribute": "irons_spellbooks:nature_magic_resist",
+            "value": 0.1,
+            "operation": "multiply_total"
+        },
+		{
+            "attribute": "irons_spellbooks:nature_spell_power",
+            "value": 0.1,
+            "operation": "multiply_total"
+        },
+        {
+            "attribute": "irons_spellbooks:cast_time_reduction",
+            "value": 0.25,
+            "operation": "multiply_total"
+        },
+        {
+            "attribute": "irons_spellbooks:cooldown_reduction",
+            "value": 0.2,
+            "operation": "multiply_total"
+        },
+		{
+            "attribute": "generic.attack_damage",
+            "value": -1,
+            "operation": "multiply_total"
+        },
+		{
+            "attribute": "generic.movement_speed",
+            "value": 0.2,
+            "operation": "multiply_total"
+        }
+    ],
+    "name": "Interstellar Isolation",
+    "description": "+25% Ender power and resistance, cast time reduction, and movespeed. +20% cooldown reduction. +10% nature power and resistance. -10% Blood and Eldritch resistance and power. -25% Evocation resistance and power."
+}

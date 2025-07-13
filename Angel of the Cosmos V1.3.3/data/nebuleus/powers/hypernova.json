@@ -1,0 +1,103 @@
+{
+    "type": "origins:active_self",
+    "entity_action": {
+        "type": "origins:and",
+        "actions": [
+            {
+                "type": "origins:execute_command",
+                "command": "summon silverfish ~ ~ ~ {Health:1024,Invulnerable:true,NoAI:1b,Silent:1b,PersistenceRequired:1b,Tags:[\"hypernova\"],Attributes:[{Name:\"generic.max_health\",Base:1024f}]}"
+            },
+            {
+                "type": "origins:execute_command",
+                "command": "power grant @e[tag=hypernova] nebuleus:invis"
+            },
+            {
+                "type": "origins:play_sound",
+                "sound": "irons_spellbooks:spell.black_hole.cast"
+            },
+            {
+                "type": "origins:execute_command",
+                "command": "title @a[distance=..64] title [\"\",{\"text\":\"You've had thy chance at Redemption,\",\"bold\":true,\"color\":\"dark_purple\"}]"
+            },
+            {
+                "type": "origins:delay",
+                "ticks": 30,
+                "action": {
+                    "type": "origins:and",
+                    "actions": [
+                        {
+                            "type": "origins:execute_command",
+                            "command": "title @a[distance=..64] title [\"\",{\"text\":\"so don't blame me...\",\"bold\":true,\"color\":\"dark_purple\"}]"
+                        },
+                        {
+                            "type": "origins:play_sound",
+                            "sound": "irons_spellbooks:dark_spell_02",
+                            "pitch": 0.5
+                        }
+                    ]
+                }
+            },
+            {
+                "type": "origins:delay",
+                "ticks": 70,
+                "action": {
+                    "type": "origins:and",
+                    "actions": [
+                        {
+                            "type": "origins:play_sound",
+                            "sound": "traveloptics:nightwarden_start"
+                        },
+                        {
+                            "type": "origins:execute_command",
+                            "command": "title @a[distance=..64] title [\"\",{\"text\":\"...WHEN YOU DIE A THOUSAND TIMES!\",\"bold\":true,\"color\":\"dark_purple\"}]"
+                        },
+                        {
+                            "type": "origins:execute_command",
+                            "command": "power grant @e[tag=hypernova] nebuleus:circle"
+                        }
+                    ]
+                }
+            },
+            {
+                "type": "origins:delay",
+                "ticks": 1900,
+                "action": {
+                    "type": "origins:execute_command",
+                    "command": "kill @e[tag=hypernova]"
+                }
+            },
+            {
+                "type": "origins:change_resource",
+                "resource": "nebuleus:starlight",
+                "change": -700
+            }
+        ]
+    },
+    "cooldown": 6000,
+    "hud_render": {
+        "should_render": true,
+        "sprite_location": "origins:textures/gui/community/huang/resource_bar_02.png",
+        "bar_index": 9
+    },
+    "key": {
+        "key": "key.saveToolbarActivator"
+    },
+    "condition": {
+        "type": "origins:and",
+        "conditions": [
+            {
+                "type": "origins:status_effect",
+                "effect": "traveloptics:blackout",
+                "inverted": true
+            },
+            {
+                "type": "origins:resource",
+                "resource": "nebuleus:starlight",
+                "comparison": ">=",
+                "compare_to": 700
+            }
+        ]
+    },
+    "name": "§6§nHypernova",
+    "description": "Illuminate the night sky with your stars, increasing your attributes across the board for the duration- as long as you stay within the area. You also get Darkness, though."
+}

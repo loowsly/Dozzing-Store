@@ -1,0 +1,579 @@
+{
+    "type": "origins:multiple",
+    "enemy": {
+        "type": "origins:active_self",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "execute as @a[tag=nebuleus] run summon silverfish ~ ~ ~ {Health:1024,Invulnerable:true,NoAI:1b,Silent:1b,PersistenceRequired:1b,Tags:[\"hypernova\"],Attributes:[{Name:\"generic.max_health\",Base:1024f}]}"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "power grant @e[tag=hypernova] nebuleus:invis"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "execute as @a[tag=nebuleus] run playsound irons_spellbooks:spell.black_hole.cast player @a[distance=..64]"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "execute as @a[tag=nebuleus] run title @a[distance=..64] title [\"\",{\"text\":\"You've had thy chance at Redemption,\",\"bold\":true,\"color\":\"dark_purple\"}]"
+                },
+                {
+                    "type": "origins:delay",
+                    "ticks": 30,
+                    "action": {
+                        "type": "origins:and",
+                        "actions": [
+                            {
+                                "type": "origins:execute_command",
+                                "command": "execute as @a[tag=nebuleus] run title @a[distance=..64] title [\"\",{\"text\":\"so don't blame me...\",\"bold\":true,\"color\":\"dark_purple\"}]"
+                            },
+                            {
+                                "type": "origins:execute_command",
+                                "command": "execute as @a[tag=nebuleus] run playsound irons_spellbooks:dark_spell_02 player @a[distance=..64] ~ ~ ~ 1 0.5"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "type": "origins:delay",
+                    "ticks": 70,
+                    "action": {
+                        "type": "origins:and",
+                        "actions": [
+                            {
+                                "type": "origins:execute_command",
+                                "command": "execute as @a[tag=nebuleus] run playsound traveloptics:nightwarden_start player @a[distance=..64]"
+                            },
+                            {
+                                "type": "origins:execute_command",
+                                "command": "execute as @a[tag=nebuleus] run title @a[distance=..64] title [\"\",{\"text\":\"...WHEN YOU DIE A THOUSAND TIMES!\",\"bold\":true,\"color\":\"dark_purple\"}]"
+                            },
+                            {
+                                "type": "origins:execute_command",
+                                "command": "power grant @e[tag=hypernova] nebuleus:circle"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "type": "origins:delay",
+                    "ticks": 1900,
+                    "action": {
+                        "type": "origins:execute_command",
+                        "command": "kill @e[tag=hypernova]"
+                    }
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "resource change @a[tag=nebuleus] nebuleus:starlight -1000"
+                }
+            ]
+        },
+        "cooldown": 6000,
+        "hud_render": {
+            "should_render": true,
+            "sprite_location": "origins:textures/gui/community/huang/resource_bar_02.png",
+            "bar_index": 9
+        },
+        "key": {
+            "key": "key.use"
+        },
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:status_effect",
+                    "effect": "traveloptics:blackout",
+                    "inverted": true
+                },
+                {
+                    "type": "origins:power_active",
+                    "power": "nebuleus:starlight",
+                    "inverted": true
+                },
+                {
+                    "type": "origins:or",
+                    "conditions": [
+                        {
+                            "type": "origins:equipped_item",
+                            "equipment_slot": "mainhand",
+                            "item_condition": {
+                                "type": "origins:and",
+                                "conditions": [
+                                    {
+                                        "type": "origins:ingredient",
+                                        "ingredient": {
+                                            "item": "minecraft:nether_star"
+                                        }
+                                    },
+                                    {
+                                        "type": "origins:enchantment",
+                                        "enchantment": "alexscaves:astral_transferring",
+                                        "comparison": "==",
+                                        "compare_to": 1
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "type": "origins:equipped_item",
+                            "equipment_slot": "offhand",
+                            "item_condition": {
+                                "type": "origins:and",
+                                "conditions": [
+                                    {
+                                        "type": "origins:ingredient",
+                                        "ingredient": {
+                                            "item": "minecraft:nether_star"
+                                        }
+                                    },
+                                    {
+                                        "type": "origins:enchantment",
+                                        "enchantment": "alexscaves:astral_transferring",
+                                        "comparison": "==",
+                                        "compare_to": 1
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    "asteroid": {
+        "type": "origins:active_self",
+        "entity_action": {
+            "type": "origins:raycast",
+            "distance": 128,
+            "block": true,
+            "entity": true,
+            "shape_type": "visual",
+            "fluid_handling": "any",
+            "hit_action": {
+                "type": "origins:and",
+                "actions": [
+                    {
+                        "type": "origins:change_resource",
+                        "resource": "nebuleus:starlight",
+                        "change": -300
+                    },
+                    {
+                        "type": "origins:play_sound",
+                        "sound": "irons_spellbooks:spell.black_hole.cast",
+                        "pitch": 2
+                    }
+                ]
+            },
+            "command_at_hit": "summon traveloptics:asteroid ~ ~80 ~ {Damage:80,ExplosionRadius:8}",
+            "command_step": 1
+        },
+        "cooldown": 400,
+        "hud_render": {
+            "should_render": true,
+            "sprite_location": "origins:textures/gui/community/huang/resource_bar_02.png",
+            "bar_index": 15
+        },
+        "key": {
+            "key": "key.use"
+        },
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:status_effect",
+                    "effect": "traveloptics:blackout",
+                    "inverted": true
+                },
+                {
+                    "type": "origins:sneaking",
+                    "inverted": true
+                },
+                {
+                    "type": "origins:resource",
+                    "resource": "nebuleus:starlight",
+                    "comparison": ">=",
+                    "compare_to": 300
+                },
+                {
+                    "type": "origins:or",
+                    "conditions": [
+                        {
+                            "type": "origins:equipped_item",
+                            "equipment_slot": "mainhand",
+                            "item_condition": {
+                                "type": "origins:and",
+                                "conditions": [
+                                    {
+                                        "type": "origins:ingredient",
+                                        "ingredient": {
+                                            "item": "minecraft:nether_star"
+                                        }
+                                    },
+                                    {
+                                        "type": "origins:enchantment",
+                                        "enchantment": "alexscaves:astral_transferring",
+                                        "comparison": "==",
+                                        "compare_to": 1
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "type": "origins:equipped_item",
+                            "equipment_slot": "offhand",
+                            "item_condition": {
+                                "type": "origins:and",
+                                "conditions": [
+                                    {
+                                        "type": "origins:ingredient",
+                                        "ingredient": {
+                                            "item": "minecraft:nether_star"
+                                        }
+                                    },
+                                    {
+                                        "type": "origins:enchantment",
+                                        "enchantment": "alexscaves:astral_transferring",
+                                        "comparison": "==",
+                                        "compare_to": 1
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    "shield": {
+        "type": "origins:active_self",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:change_resource",
+                    "resource": "nebuleus:starlight",
+                    "change": -50
+                },
+                {
+                    "type": "origins:apply_effect",
+                    "effect": {
+                        "effect": "minecraft:resistance",
+                        "amplifier": 10,
+                        "duration": 21,
+                        "show_particles": false,
+                        "show_icon": true
+                    }
+                }
+            ]
+        },
+        "cooldown": 20,
+        "hud_render": {
+            "should_render": true,
+            "sprite_location": "origins:textures/gui/community/spiderkolo/resource_bar_02.png",
+            "bar_index": 0
+        },
+        "key": {
+            "key": "key.use",
+            "continuous": true
+        },
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:status_effect",
+                    "effect": "traveloptics:blackout",
+                    "inverted": true
+                },
+                {
+                    "type": "origins:sneaking"
+                },
+                {
+                    "type": "origins:resource",
+                    "resource": "nebuleus:starlight",
+                    "comparison": ">=",
+                    "compare_to": 50
+                },
+                {
+                    "type": "origins:or",
+                    "conditions": [
+                        {
+                            "type": "origins:equipped_item",
+                            "equipment_slot": "mainhand",
+                            "item_condition": {
+                                "type": "origins:and",
+                                "conditions": [
+                                    {
+                                        "type": "origins:ingredient",
+                                        "ingredient": {
+                                            "item": "minecraft:nether_star"
+                                        }
+                                    },
+                                    {
+                                        "type": "origins:enchantment",
+                                        "enchantment": "alexscaves:astral_transferring",
+                                        "comparison": "==",
+                                        "compare_to": 1
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "type": "origins:equipped_item",
+                            "equipment_slot": "offhand",
+                            "item_condition": {
+                                "type": "origins:and",
+                                "conditions": [
+                                    {
+                                        "type": "origins:ingredient",
+                                        "ingredient": {
+                                            "item": "minecraft:nether_star"
+                                        }
+                                    },
+                                    {
+                                        "type": "origins:enchantment",
+                                        "enchantment": "alexscaves:astral_transferring",
+                                        "comparison": "==",
+                                        "compare_to": 1
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    "dr": {
+        "type": "origins:modify_damage_taken",
+        "modifier": {
+            "operation": "multiply_total",
+            "value": -1
+        },
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:status_effect",
+                    "effect": "minecraft:resistance",
+                    "min_amplifier": 10
+                },
+                {
+                    "type": "origins:sneaking"
+                },
+                {
+                    "type": "origins:resource",
+                    "resource": "nebuleus:starlight",
+                    "comparison": ">=",
+                    "compare_to": 50
+                },
+                {
+                    "type": "origins:or",
+                    "conditions": [
+                        {
+                            "type": "origins:equipped_item",
+                            "equipment_slot": "mainhand",
+                            "item_condition": {
+                                "type": "origins:and",
+                                "conditions": [
+                                    {
+                                        "type": "origins:ingredient",
+                                        "ingredient": {
+                                            "item": "minecraft:nether_star"
+                                        }
+                                    },
+                                    {
+                                        "type": "origins:enchantment",
+                                        "enchantment": "alexscaves:astral_transferring",
+                                        "comparison": "==",
+                                        "compare_to": 1
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "type": "origins:equipped_item",
+                            "equipment_slot": "offhand",
+                            "item_condition": {
+                                "type": "origins:and",
+                                "conditions": [
+                                    {
+                                        "type": "origins:ingredient",
+                                        "ingredient": {
+                                            "item": "minecraft:nether_star"
+                                        }
+                                    },
+                                    {
+                                        "type": "origins:enchantment",
+                                        "enchantment": "alexscaves:astral_transferring",
+                                        "comparison": "==",
+                                        "compare_to": 1
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    "dmg": {
+        "type": "origins:modify_damage_dealt",
+        "modifier": {
+            "operation": "multiply_total",
+            "value": -1
+        },
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:status_effect",
+                    "effect": "minecraft:resistance",
+                    "min_amplifier": 10
+                },
+                {
+                    "type": "origins:sneaking"
+                },
+                {
+                    "type": "origins:resource",
+                    "resource": "nebuleus:starlight",
+                    "comparison": ">=",
+                    "compare_to": 25
+                },
+                {
+                    "type": "origins:or",
+                    "conditions": [
+                        {
+                            "type": "origins:equipped_item",
+                            "equipment_slot": "mainhand",
+                            "item_condition": {
+                                "type": "origins:and",
+                                "conditions": [
+                                    {
+                                        "type": "origins:ingredient",
+                                        "ingredient": {
+                                            "item": "minecraft:nether_star"
+                                        }
+                                    },
+                                    {
+                                        "type": "origins:enchantment",
+                                        "enchantment": "alexscaves:astral_transferring",
+                                        "comparison": "==",
+                                        "compare_to": 1
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "type": "origins:equipped_item",
+                            "equipment_slot": "offhand",
+                            "item_condition": {
+                                "type": "origins:and",
+                                "conditions": [
+                                    {
+                                        "type": "origins:ingredient",
+                                        "ingredient": {
+                                            "item": "minecraft:nether_star"
+                                        }
+                                    },
+                                    {
+                                        "type": "origins:enchantment",
+                                        "enchantment": "alexscaves:astral_transferring",
+                                        "comparison": "==",
+                                        "compare_to": 1
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    "tick": {
+        "type": "origins:action_over_time",
+        "interval": 20,
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:if_else",
+                    "condition": {
+                        "type": "origins:and",
+                        "conditions": [
+                            {
+                                "type": "origins:power_active",
+                                "power": "nebuleus:starlight"
+                            },
+                            {
+                                "type": "origins:resource",
+                                "resource": "nebuleus:starlight",
+                                "comparison": "<",
+                                "compare_to": 1000
+                            }
+                        ]
+                    },
+                    "if_action": {
+                        "type": "origins:execute_command",
+                        "command": "resource change @s nebuleus:starlight 10"
+                    },
+                    "else_action": {
+                        "type": "origins:execute_command",
+                        "command": "mana add @s 20"
+                    }
+                }
+            ]
+        },
+        "condition": {
+            "type": "origins:or",
+            "conditions": [
+                {
+                    "type": "origins:equipped_item",
+                    "equipment_slot": "mainhand",
+                    "item_condition": {
+                        "type": "origins:and",
+                        "conditions": [
+                            {
+                                "type": "origins:ingredient",
+                                "ingredient": {
+                                    "item": "minecraft:nether_star"
+                                }
+                            },
+                            {
+                                "type": "origins:enchantment",
+                                "enchantment": "alexscaves:astral_transferring",
+                                "comparison": "==",
+                                "compare_to": 1
+                            }
+                        ]
+                    }
+                },
+                {
+                    "type": "origins:equipped_item",
+                    "equipment_slot": "offhand",
+                    "item_condition": {
+                        "type": "origins:and",
+                        "conditions": [
+                            {
+                                "type": "origins:ingredient",
+                                "ingredient": {
+                                    "item": "minecraft:nether_star"
+                                }
+                            },
+                            {
+                                "type": "origins:enchantment",
+                                "enchantment": "alexscaves:astral_transferring",
+                                "comparison": "==",
+                                "compare_to": 1
+                            }
+                        ]
+                    }
+                }
+            ]
+        }
+    }
+}

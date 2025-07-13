@@ -1,0 +1,33 @@
+{
+    "type": "origins:action_on_hit",
+    "bientity_action": {
+        "type": "origins:target_action",
+        "action": {
+            "type": "origins:chance",
+            "action": {
+                "type": "origins:and",
+                "actions": [
+                    {
+                        "type": "origins:spawn_particles",
+                        "particle": {
+                            "type": "minecraft:glow"
+                        },
+                        "count": 1
+                    },
+                    {
+                        "type": "origins:execute_command",
+                        "command": "power grant @s nebuleus:stars"
+                    },
+                    {
+                        "type": "origins:execute_command",
+                        "command": "resource change @s nebuleus:stars_count 1"
+                    }
+                ]
+            },
+            "chance": 0.3
+        }
+    },
+    "cooldown": 10,
+    "name": "Celestial",
+    "description": "Hitting foes has a 30% chance to create stars around them. When slain, they drop Star Fragments that restore 2 HP and 5% Starlight when picked up."
+}

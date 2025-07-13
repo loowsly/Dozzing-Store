@@ -1,0 +1,6 @@
+{
+    "type": "origins:elytra_flight",
+    "render_elytra": false,
+    "name": "Wings",
+    "description": "You can glide at the cost of Starlight. Obtaining Elytra halves the cost."
+}

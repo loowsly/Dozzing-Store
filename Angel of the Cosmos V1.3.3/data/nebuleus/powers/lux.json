@@ -1,0 +1,69 @@
+{
+    "type": "origins:multiple",
+    "count": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 1,
+        "hud_render": {
+            "should_render": false
+        }
+    },
+    "craft": {
+        "type": "origins:item_on_item",
+        "on_item_condition": {
+            "type": "origins:ingredient",
+            "ingredient": {
+                "item": "minecraft:nether_star"
+            }
+        },
+        "using_item_condition": {
+            "type": "origins:ingredient",
+            "ingredient": {
+                "item": "traveloptics:celestial_shard"
+            }
+        },
+        "result_from_on_stack": 1,
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:change_resource",
+                    "resource": "nebuleus:lux_count",
+                    "change": 1
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "clear @s nether_star 1"
+                },
+				{
+                    "type": "origins:execute_command",
+                    "command": "power grant @s nebuleus:landing"
+                },
+                {
+                    "type": "origins:delay",
+                    "ticks": 10,
+                    "action": {
+                        "type": "origins:execute_command",
+                        "command": "give @s nether_star{display:{Name:'[\"\",{\"text\":\"Lux\",\"italic\":false,\"bold\":true,\"color\":\"dark_purple\"}]',Lore:['[\"\",{\"text\":\"The core of a dead star, this artifact radiates Starlight\",\"italic\":false,\"bold\":true}]','[\"\"]','[\"\",{\"text\":\"- While held, regen 1% Starlight per second. If not applicable, regen 20 mana per second.\",\"italic\":false}]','[\"\"]','[\"\",{\"text\":\"- Gain immunity to Angel of the Cosmos actives.\",\"italic\":false}]','[\"\"]','[\"\",{\"text\":\"- Right-click to call down an asteroid.\",\"italic\":false}]','[\"\"]','[\"\",{\"text\":\"- Sneak and right-click to absorb Starlight to shield yourself.\",\"italic\":false}]','[\"\"]','[\"\",{\"text\":\"- If used by someone other than Angel of the Cosmos, they can force her to cast Hypernova- ignoring the cooldown and costing her 100% Starlight.\",\"italic\":false}]']},Enchantments:[{lvl:1,id:\"alexscaves:astral_transferring\"}],AttributeModifiers:[{AttributeName:\"attributeslib:dodge_chance\",Amount:0.1,Slot:offhand,Operation:0,UUID:[I;-12568,24884,205758,-49768],Name:1752025624453},{AttributeName:\"attributeslib:dodge_chance\",Amount:0.1,Slot:mainhand,Operation:0,UUID:[I;-12568,24884,205758,-49768],Name:1752025624453},{AttributeName:\"irons_spellbooks:spell_power\",Amount:0.2,Slot:offhand,Operation:1,UUID:[I;-12568,24884,205758,-49768],Name:1752025624453},{AttributeName:\"irons_spellbooks:spell_power\",Amount:0.2,Slot:mainhand,Operation:1,UUID:[I;-12568,25184,205758,-50368],Name:1752025624453},{AttributeName:\"irons_spellbooks:cooldown_reduction\",Amount:0.15,Slot:offhand,Operation:1,UUID:[I;-12568,24884,205758,-49768],Name:1752025624453},{AttributeName:\"irons_spellbooks:cooldown_reduction\",Amount:0.15,Slot:mainhand,Operation:1,UUID:[I;-12568,25184,205758,-50368],Name:1752025624453}],HideFlags:1}"
+                    }
+                }
+            ]
+        },
+        "on_item_action": {
+            "type": "origins:consume",
+            "amount": 1
+        },
+        "using_item_action": {
+            "type": "origins:consume",
+            "amount": 1
+        },
+        "condition": {
+            "type": "origins:resource",
+            "resource": "nebuleus:lux_count",
+            "comparison": "==",
+            "compare_to": 0
+        }
+    },
+    "name": "Lux",
+    "description": "You can craft a special item by using a Celestial Shard on a Nether Star in the inventory. Only once, though."
+}

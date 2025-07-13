@@ -1,0 +1,122 @@
+{
+    "type": "origins:action_over_time",
+    "interval": 10,
+    "entity_action": {
+        "type": "origins:and",
+        "actions": [
+            {
+                "type": "origins:delay",
+                "ticks": 101,
+                "action": {
+                    "type": "origins:and",
+                    "actions": [
+                        {
+                            "type": "origins:execute_command",
+                            "command": "kill @e[tag=kuunvalo]"
+                        },
+                        {
+                            "type": "origins:execute_command",
+                            "command": "power remove @a nebuleus:global/dr"
+                        }
+                    ]
+                }
+            },
+            {
+                "type": "origins:execute_command",
+                "command": "power grant @a[nbt={SelectedItem:{id:\"minecraft:nether_star\",tag:{Enchantments:[{id:\"alexscaves:astral_transferring\",lvl:1}]}}},distance=..12] nebuleus:global/dr"
+            },
+            {
+                "type": "origins:spawn_particles",
+                "particle": {
+                    "type": "minecraft:glow"
+                },
+                "count": 1250,
+                "spread": {
+                    "x": 5,
+                    "y": 30,
+                    "z": 5
+                }
+            },
+            {
+                "type": "origins:spawn_particles",
+                "particle": {
+                    "type": "minecraft:end_rod"
+                },
+                "count": 3500,
+                "spread": {
+                    "x": 5,
+                    "y": 30,
+                    "z": 5
+                }
+            },
+            {
+                "type": "origins:spawn_particles",
+                "particle": {
+                    "type": "minecraft:flash"
+                },
+                "count": 80,
+                "spread": {
+                    "x": 5,
+                    "y": 0,
+                    "z": 5
+                }
+            },
+            {
+                "type": "origins:area_of_effect",
+                "radius": 9,
+                "bientity_condition": {
+                    "type": "origins:target_condition",
+                    "condition": {
+                        "type": "origins:and",
+                        "conditions": [
+                            {
+                                "type": "origins:living"
+                            },
+                            {
+                                "type": "origins:power",
+                                "power": "nebuleus:tag",
+                                "inverted": true
+                            }
+                        ]
+                    }
+                },
+                "bientity_action": {
+                    "type": "origins:target_action",
+                    "action": {
+                        "type": "origins:and",
+                        "actions": [
+                            {
+                                "type": "origins:if_else",
+                                "condition": {
+                                    "type": "origins:entity_group",
+                                    "group": "undead"
+                                },
+                                "if_action": {
+                                    "type": "origins:execute_command",
+                                    "command": "damage @s 90 cataclysm:shredder by @p[tag=nebuleus]"
+                                },
+                                "else_action": {
+                                    "type": "origins:execute_command",
+                                    "command": "damage @s 60 cataclysm:shredder by @p[tag=nebuleus]"
+                                }
+                            },
+                            {
+                                "type": "origins:apply_effect",
+                                "effect": {
+                                    "effect": "traveloptics:blackout",
+                                    "duration": 100,
+                                    "show_particles": false,
+                                    "show_icon": true
+                                }
+                            }
+                        ]
+                    }
+                }
+            },
+            {
+                "type": "origins:play_sound",
+                "sound": "minecraft:entity.generic.explode"
+            }
+        ]
+    }
+}

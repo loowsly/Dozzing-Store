@@ -1,0 +1,44 @@
+{
+    "type": "origins:action_over_time",
+    "interval": 1,
+    "rising_action": {
+        "type": "origins:and",
+        "actions": [
+            {
+                "type": "origins:area_of_effect",
+                "radius": 4,
+                "bientity_condition": {
+                    "type": "origins:target_condition",
+                    "condition": {
+                        "type": "origins:and",
+                        "conditions": [
+                            {
+                                "type": "origins:power",
+                                "power": "nebuleus:tag",
+                                "inverted": true
+                            },
+                            {
+                                "type": "origins:living"
+                            }
+                        ]
+                    }
+                },
+                "bientity_action": {
+                    "type": "origins:target_action",
+                    "action": {
+                        "type": "origins:execute_command",
+                        "command": "damage @s 12 magic by @p[tag=nebuleus]"
+                    }
+                }
+            },
+            {
+                "type": "origins:execute_command",
+                "command": "kill @e[tag=piercing]"
+            },
+            {
+                "type": "origins:play_sound",
+                "sound": "minecraft:item.trident.thunder"
+            }
+        ]
+    }
+}

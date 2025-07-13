@@ -1,0 +1,91 @@
+{
+    "type": "origins:action_over_time",
+    "interval": 20,
+    "entity_action": {
+        "type": "origins:and",
+        "actions": [
+            {
+                "type": "origins:spawn_particles",
+                "particle": {
+                    "type": "minecraft:end_rod"
+                },
+                "count": 100,
+                "spread": {
+                    "x": 30,
+                    "y": 5,
+                    "z": 30
+                }
+            },
+            {
+                "type": "origins:spawn_particles",
+                "particle": {
+                    "type": "minecraft:glow"
+                },
+                "count": 200,
+                "spread": {
+                    "x": 30,
+                    "y": 5,
+                    "z": 30
+                }
+            },
+            {
+                "type": "origins:area_of_effect",
+                "radius": 64,
+                "shape": "sphere",
+                "bientity_action": {
+                    "type": "origins:target_action",
+                    "action": {
+                        "type": "origins:and",
+                        "actions": [
+                            {
+                                "type": "origins:execute_command",
+                                "command": "resource change @s nebuleus:starlight 50"
+                            },
+                            {
+                                "type": "origins:apply_effect",
+                                "effect": {
+                                    "effect": "irons_spellbooks:planar_sight",
+                                    "duration": 21,
+                                    "show_particles": false,
+                                    "show_icon": true
+                                }
+                            }
+                        ]
+                    }
+                },
+                "bientity_condition": {
+                    "type": "origins:target_condition",
+                    "condition": {
+                        "type": "origins:origin",
+                        "origin": "nebuleus:nebuleus"
+                    }
+                }
+            },
+            {
+                "type": "origins:area_of_effect",
+                "radius": 64,
+                "shape": "sphere",
+                "bientity_action": {
+                    "type": "origins:target_action",
+                    "action": {
+                        "type": "origins:apply_effect",
+                        "effects": [
+                            {
+                                "effect": "minecraft:darkness",
+                                "duration": 21,
+                                "show_particles": false,
+                                "show_icon": true
+                            },
+                            {
+                                "effect": "traveloptics:astral_sense",
+                                "duration": 21,
+                                "show_particles": false,
+                                "show_icon": true
+                            }
+                        ]
+                    }
+                }
+            }
+        ]
+    }
+}

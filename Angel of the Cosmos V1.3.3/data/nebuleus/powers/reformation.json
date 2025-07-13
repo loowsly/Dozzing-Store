@@ -1,0 +1,26 @@
+{
+    "type": "origins:action_over_time",
+    "entity_action": {
+        "type": "origins:and",
+        "actions": [
+            {
+                "type": "origins:feed",
+                "food": 20,
+                "saturation": 20
+            },
+            {
+                "type": "origins:heal",
+                "amount": 1
+            }
+        ]
+    },
+    "interval": 20,
+    "condition": {
+        "type": "origins:resource",
+        "resource": "nebuleus:starlight",
+        "comparison": ">",
+        "compare_to": 700
+    },
+    "name": "Star-Set Reformation",
+    "description": "You don't have natural regeneration. Instead, heal 1 HP per second as long as Starlight is above 70%."
+}

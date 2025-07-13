@@ -1,0 +1,231 @@
+{
+    "type": "origins:active_self",
+    "entity_action": {
+        "type": "origins:if_else",
+        "condition": {
+            "type": "origins:sneaking"
+        },
+        "if_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:change_resource",
+                    "resource": "nebuleus:starlight",
+                    "change": -50
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "cast @s teleport 5"
+                },
+                {
+                    "type": "origins:delay",
+                    "ticks": 1,
+                    "action": {
+                        "type": "origins:and",
+                        "actions": [
+                            {
+                                "type": "origins:area_of_effect",
+                                "radius": 3,
+                                "shape": "sphere",
+                                "bientity_action": {
+                                    "type": "origins:target_action",
+                                    "action": {
+                                        "type": "origins:execute_command",
+                                        "command": "damage @s 8 minecraft:sonic_boom by @p[tag=nebuleus]"
+                                    }
+                                },
+                                "bientity_condition": {
+                                    "type": "origins:target_condition",
+                                    "condition": {
+                                        "type": "origins:and",
+                                        "conditions": [
+                                            {
+                                                "type": "origins:power",
+                                                "power": "nebuleus:tag",
+                                                "inverted": true
+                                            },
+                                            {
+                                                "type": "origins:living"
+                                            }
+                                        ]
+                                    }
+                                }
+                            },
+                            {
+                                "type": "origins:spawn_particles",
+                                "particle": {
+                                    "type": "alexscaves:purple_witch_explosion"
+                                },
+                                "count": 14
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        "else_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:change_resource",
+                    "resource": "nebuleus:starlight",
+                    "change": -50
+                },
+                {
+                    "type": "origins:area_of_effect",
+                    "radius": 3,
+                    "shape": "sphere",
+                    "bientity_action": {
+                        "type": "origins:target_action",
+                        "action": {
+                            "type": "origins:execute_command",
+                            "command": "damage @s 6 minecraft:magic by @p[tag=nebuleus]"
+                        }
+                    }
+                },
+                {
+                    "type": "origins:spawn_particles",
+                    "particle": {
+                        "type": "minecraft:portal"
+                    },
+                    "count": 32,
+                    "spread": {
+                        "x": 2,
+                        "y": 1,
+                        "z": 2
+                    }
+                },
+                {
+                    "type": "origins:delay",
+                    "ticks": 10,
+                    "action": {
+                        "type": "origins:and",
+                        "actions": [
+                            {
+                                "type": "origins:area_of_effect",
+                                "radius": 3,
+                                "shape": "sphere",
+                                "bientity_action": {
+                                    "type": "origins:target_action",
+                                    "action": {
+                                        "type": "origins:execute_command",
+                                        "command": "damage @s 6 minecraft:magic by @p[tag=nebuleus]"
+                                    }
+                                }
+                            },
+                            {
+                                "type": "origins:spawn_particles",
+                                "particle": {
+                                    "type": "minecraft:portal"
+                                },
+                                "count": 32,
+                                "spread": {
+                                    "x": 2,
+                                    "y": 1,
+                                    "z": 2
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "type": "origins:delay",
+                    "ticks": 20,
+                    "action": {
+                        "type": "origins:and",
+                        "actions": [
+                            {
+                                "type": "origins:area_of_effect",
+                                "radius": 4,
+                                "shape": "sphere",
+                                "bientity_action": {
+                                    "type": "origins:target_action",
+                                    "action": {
+                                        "type": "origins:execute_command",
+                                        "command": "damage @s 8 minecraft:magic by @p[tag=nebuleus]"
+                                    }
+                                }
+                            },
+                            {
+                                "type": "origins:spawn_particles",
+                                "particle": {
+                                    "type": "minecraft:flash"
+                                },
+                                "count": 1
+                            },
+                            {
+                                "type": "origins:spawn_particles",
+                                "particle": {
+                                    "type": "minecraft:glow"
+                                },
+                                "count": 36,
+                                "spread": {
+                                    "x": 3,
+                                    "y": 1.5,
+                                    "z": 3
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "type": "origins:delay",
+                    "ticks": 30,
+                    "action": {
+                        "type": "origins:execute_command",
+                        "command": "power grant @s nebuleus:landing"
+                    }
+                },
+                {
+                    "type": "origins:add_velocity",
+                    "z": 2,
+                    "space": "local"
+                },
+                {
+                    "type": "origins:apply_effect",
+                    "effect": {
+                        "effect": "minecraft:resistance",
+                        "duration": 10,
+                        "amplifier": 10,
+                        "show_particles": false
+                    }
+                },
+                {
+                    "type": "origins:play_sound",
+                    "sound": "minecraft:entity.allay.ambient_with_item"
+                },
+                {
+                    "type": "origins:play_sound",
+                    "sound": "minecraft:entity.phantom.flap"
+                }
+            ]
+        }
+    },
+    "cooldown": 60,
+    "hud_render": {
+        "should_render": true,
+        "sprite_location": "origins:textures/gui/community/huang/resource_bar_01.png",
+        "bar_index": 1
+    },
+    "key": {
+        "key": "key.origins.secondary_active"
+    },
+    "condition": {
+        "type": "origins:and",
+        "conditions": [
+            {
+                "type": "origins:status_effect",
+                "effect": "traveloptics:blackout",
+                "inverted": true
+            },
+            {
+                "type": "origins:resource",
+                "resource": "nebuleus:starlight",
+                "comparison": ">=",
+                "compare_to": 50
+            }
+        ]
+    },
+    "name": "§6§nNebula Dash",
+    "description": "Dash, damaging enemies hit. If done while gliding, landing will create a burst of starlight. If sneaking, instead teleport where you're looking."
+}

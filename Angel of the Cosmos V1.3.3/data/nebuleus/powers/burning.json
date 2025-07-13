@@ -1,0 +1,53 @@
+{
+    "type": "origins:multiple",
+    "immunity": {
+        "type": "origins:effect_immunity",
+        "effects": [
+            "alexscaves:irradiated",
+            "attributeslib:bleeding",
+            "attributeslib:grievous",
+            "cataclysm:abyssal_burn",
+            "cataclysm:abyssal_curse",
+            "cataclysm:abyssal_fear",
+            "cataclysm:blazing_brand",
+            "cataclysm:curse_of_desert",
+            "irons_spellbooks:blight",
+            "irons_spellbooks:chilled",
+            "irons_spellbooks:rend",
+            "irons_spellbooks:slowed",
+            "minecraft:blindness",
+            "minecraft:hunger",
+            "minecraft:mining_fatigue",
+            "minecraft:poison",
+            "minecraft:saturation",
+            "minecraft:slowness",
+            "minecraft:unluck",
+            "minecraft:wither",
+            "traveloptics:tidal_torment",
+            "traveloptics:wet"
+        ]
+    },
+    "mobs": {
+        "type": "origins:effect_immunity",
+        "effects": [
+            "alexsmobs:debilitating_sting",
+            "alexsmobs:exsanguination",
+            "alexsmobs:sunbird_curse"
+        ]
+    },
+    "biomancy": {
+        "type": "origins:effect_immunity",
+        "effects": [
+            "biomancy:bleed",
+            "biomancy:drowsy"
+        ]
+    },
+	"tcon": {
+        "type": "origins:effect_immunity",
+        "effects": [
+            "tconstruct:bleeding"
+        ]
+    },
+    "name": "Burning Star",
+    "description": "Immunity to toxins, fire, freezing, bleeding, and curses."
+}

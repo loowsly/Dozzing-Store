@@ -1,0 +1,141 @@
+{
+    "type": "origins:multiple",
+    "damage": {
+        "type": "origins:modify_damage_dealt",
+        "modifier": {
+            "operation": "set_total",
+            "value": 0
+        }
+    },
+    "blocks": {
+        "type": "origins:prevent_block_selection"
+    },
+    "items": {
+        "type": "origins:prevent_item_use"
+    },
+    "elytra": {
+        "type": "origins:prevent_elytra_flight"
+    },
+    "sprint": {
+        "type": "origins:prevent_sprinting"
+    },
+    "attributes": {
+        "type": "origins:attribute",
+        "modifiers": [
+            {
+                "attribute": "attributeslib:creative_flight",
+                "operation": "multiply_total",
+                "value": -1
+            },
+            {
+                "attribute": "attributeslib:dodge_chance",
+                "operation": "multiply_total",
+                "value": -1
+            },
+            {
+                "attribute": "attributeslib:elytra_flight",
+                "operation": "multiply_total",
+                "value": -1
+            },
+            {
+                "attribute": "caelus:fall_flying",
+                "operation": "multiply_total",
+                "value": -1
+            },
+            {
+                "attribute": "irons_spellbooks:spell_power",
+                "operation": "multiply_total",
+                "value": -1
+            },
+            {
+                "attribute": "irons_spellbooks:blood_spell_power",
+                "value": -1,
+                "operation": "multiply_total"
+            },
+            {
+                "attribute": "irons_spellbooks:eldritch_spell_power",
+                "value": -1,
+                "operation": "multiply_total"
+            },
+            {
+                "attribute": "irons_spellbooks:ender_spell_power",
+                "value": -1,
+                "operation": "multiply_total"
+            },
+            {
+                "attribute": "irons_spellbooks:evocation_spell_power",
+                "value": -1,
+                "operation": "multiply_total"
+            },
+            {
+                "attribute": "irons_spellbooks:fire_spell_power",
+                "value": -1,
+                "operation": "multiply_total"
+            },
+            {
+                "attribute": "irons_spellbooks:holy_spell_power",
+                "value": -1,
+                "operation": "multiply_total"
+            },
+            {
+                "attribute": "irons_spellbooks:ice_spell_power",
+                "value": -1,
+                "operation": "multiply_total"
+            },
+            {
+                "attribute": "irons_spellbooks:lightning_spell_power",
+                "value": -1,
+                "operation": "multiply_total"
+            },
+            {
+                "attribute": "irons_spellbooks:nature_spell_power",
+                "value": -1,
+                "operation": "multiply_total"
+            },
+            {
+                "attribute": "irons_spellbooks:cast_time_reduction",
+                "value": -1,
+                "operation": "multiply_total"
+            },
+            {
+                "attribute": "minecraft:generic.movement_speed",
+                "operation": "multiply_total",
+                "value": -1
+            }
+        ]
+    },
+    "spawn": {
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "tp @s @e[tag=stun,limit=1]"
+                },
+                {
+                    "type": "origins:delay",
+                    "ticks": 40,
+                    "action": {
+                        "type": "origins:execute_command",
+                        "command": "kill @e[tag=stun]"
+                    }
+                }
+            ]
+        },
+        "rising_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "summon silverfish ~ ~ ~ {Invulnerable:1b,NoAI:1b,Silent:1b,Tags:[\"stun\"]}"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "power grant @e[tag=stun] nebuleus:invis"
+                }
+            ]
+        },
+        "interval": 1
+    }
+}

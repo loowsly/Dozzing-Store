@@ -1,0 +1,168 @@
+{
+    "type": "origins:action_over_time",
+    "interval": 1,
+    "entity_action": {
+        "type": "origins:and",
+        "actions": [
+            {
+                "type": "origins:execute_command",
+                "command": "power grant @a[nbt={SelectedItem:{id:\"minecraft:nether_star\",tag:{Enchantments:[{id:\"alexscaves:astral_transferring\",lvl:1}]}}},distance=..64] nebuleus:global/dr"
+            },
+            {
+                "type": "origins:choice",
+                "actions": [
+                    {
+                        "element": {
+                            "type": "origins:execute_command",
+                            "command": "summon irons_spellbooks:comet ~ ~12 ~ {Damage:40,ExplosionRadius:5}"
+                        },
+                        "weight": 1
+                    },
+                    {
+                        "element": {
+                            "type": "origins:execute_command",
+                            "command": "summon irons_spellbooks:comet ~ ~12 ~5 {Damage:40,ExplosionRadius:5}"
+                        },
+                        "weight": 1
+                    },
+                    {
+                        "element": {
+                            "type": "origins:execute_command",
+                            "command": "summon irons_spellbooks:comet ~ ~12 ~-5 {Damage:40,ExplosionRadius:5}"
+                        },
+                        "weight": 1
+                    },
+                    {
+                        "element": {
+                            "type": "origins:execute_command",
+                            "command": "summon irons_spellbooks:comet ~5 ~12 ~ {Damage:40,ExplosionRadius:5}"
+                        },
+                        "weight": 1
+                    },
+                    {
+                        "element": {
+                            "type": "origins:execute_command",
+                            "command": "summon irons_spellbooks:comet ~-5 ~12 ~ {Damage:40,ExplosionRadius:5}"
+                        },
+                        "weight": 1
+                    },
+                    {
+                        "element": {
+                            "type": "origins:execute_command",
+                            "command": "summon irons_spellbooks:comet ~-5 ~12 ~-5 {Damage:40,ExplosionRadius:5}"
+                        },
+                        "weight": 1
+                    },
+                    {
+                        "element": {
+                            "type": "origins:execute_command",
+                            "command": "summon irons_spellbooks:comet ~5 ~12 ~5 {Damage:40,ExplosionRadius:5}"
+                        },
+                        "weight": 1
+                    },
+                    {
+                        "element": {
+                            "type": "origins:execute_command",
+                            "command": "summon irons_spellbooks:comet ~10 ~12 ~10 {Damage:40,ExplosionRadius:5}"
+                        },
+                        "weight": 1
+                    },
+                    {
+                        "element": {
+                            "type": "origins:execute_command",
+                            "command": "summon irons_spellbooks:comet ~-10 ~12 ~-10 {Damage:40,ExplosionRadius:5}"
+                        },
+                        "weight": 1
+                    },
+                    {
+                        "element": {
+                            "type": "origins:execute_command",
+                            "command": "summon irons_spellbooks:comet ~10 ~12 ~ {Damage:40,ExplosionRadius:5}"
+                        },
+                        "weight": 1
+                    },
+                    {
+                        "element": {
+                            "type": "origins:execute_command",
+                            "command": "summon irons_spellbooks:comet ~ ~12 ~10 {Damage:40,ExplosionRadius:5}"
+                        },
+                        "weight": 1
+                    },
+                    {
+                        "element": {
+                            "type": "origins:execute_command",
+                            "command": "summon irons_spellbooks:comet ~ ~12 ~-10 {Damage:40,ExplosionRadius:5}"
+                        },
+                        "weight": 1
+                    },
+                    {
+                        "element": {
+                            "type": "origins:execute_command",
+                            "command": "summon irons_spellbooks:comet ~-10 ~12 ~ {Damage:40,ExplosionRadius:5}"
+                        },
+                        "weight": 1
+                    },
+                    {
+                        "element": {
+                            "type": "origins:execute_command",
+                            "command": "summon irons_spellbooks:comet ~15 ~12 ~15 {Damage:40,ExplosionRadius:5}"
+                        },
+                        "weight": 1
+                    },
+                    {
+                        "element": {
+                            "type": "origins:execute_command",
+                            "command": "summon irons_spellbooks:comet ~-15 ~12 ~-15 {Damage:40,ExplosionRadius:5}"
+                        },
+                        "weight": 1
+                    },
+                    {
+                        "element": {
+                            "type": "origins:execute_command",
+                            "command": "summon irons_spellbooks:comet ~ ~12 ~15 {Damage:40,ExplosionRadius:5}"
+                        },
+                        "weight": 1
+                    },
+                    {
+                        "element": {
+                            "type": "origins:execute_command",
+                            "command": "summon irons_spellbooks:comet ~15 ~12 ~ {Damage:40,ExplosionRadius:5}"
+                        },
+                        "weight": 1
+                    },
+                    {
+                        "element": {
+                            "type": "origins:execute_command",
+                            "command": "summon irons_spellbooks:comet ~-15 ~12 ~ {Damage:40,ExplosionRadius:5}"
+                        },
+                        "weight": 1
+                    },
+                    {
+                        "element": {
+                            "type": "origins:execute_command",
+                            "command": "summon irons_spellbooks:comet ~ ~12 ~-15 {Damage:40,ExplosionRadius:5}"
+                        },
+                        "weight": 1
+                    }
+                ]
+            },
+            {
+                "type": "origins:delay",
+                "ticks": 100,
+                "action": {
+                    "type": "origins:and",
+                    "actions": [
+                        {
+                            "type": "origins:execute_command",
+                            "command": "kill @e[tag=starfall]"
+                        },
+                        {
+                            "type": "origins:execute_command",
+                            "command": "power remove @a nebuleus:global/dr"
+                        }
+                    ]
+                }
+            }
+        ]
+    }
+}

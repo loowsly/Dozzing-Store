@@ -1,0 +1,15 @@
+{
+    "type": "origins:self_glow",
+    "use_teams": false,
+    "red": 1,
+    "green": 0,
+    "blue": 1,
+    "condition": {
+        "type": "origins:resource",
+        "resource": "nebuleus:starlight",
+        "comparison": "==",
+        "compare_to": 1000
+    },
+    "name": "Glow",
+    "description": "Glow when at full Starlight."
+}

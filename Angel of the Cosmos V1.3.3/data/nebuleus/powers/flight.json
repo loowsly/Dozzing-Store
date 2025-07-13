@@ -1,0 +1,34 @@
+{
+    "type": "origins:action_over_time",
+    "entity_action": {
+        "type": "origins:if_else",
+        "condition": {
+            "type": "origins:advancement",
+            "advancement": "minecraft:end/elytra"
+        },
+        "if_action": {
+            "type": "origins:change_resource",
+            "resource": "nebuleus:starlight",
+            "change": -5
+        },
+        "else_action": {
+            "type": "origins:change_resource",
+            "resource": "nebuleus:starlight",
+            "change": -10
+        }
+    },
+    "interval": 20,
+    "condition": {
+        "type": "origins:and",
+        "conditions": [
+            {
+                "type": "origins:fall_flying"
+            },
+            {
+                "type": "origins:gamemode",
+                "gamemode": "survival"
+            }
+        ]
+    },
+    "hidden": true
+}

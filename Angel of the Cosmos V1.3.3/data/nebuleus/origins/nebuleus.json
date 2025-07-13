@@ -1,0 +1,28 @@
+{
+    "powers": [
+        "nebuleus:piercing",
+        "nebuleus:dash",
+		"nebuleus:blast",
+		"nebuleus:hypernova",
+        "nebuleus:attributes",
+        "nebuleus:burning",
+        "nebuleus:celestial",
+        "nebuleus:class",
+        "nebuleus:flight",
+        "nebuleus:glow",
+        "nebuleus:interstellar",
+        "nebuleus:lux",
+        "nebuleus:pickup",
+        "nebuleus:refill",
+        "nebuleus:reformation",
+        "nebuleus:starlight",
+        "nebuleus:tag",
+        "nebuleus:unnatural",
+        "nebuleus:wings"
+    ],
+    "icon": "traveloptics:celestial_fragment",
+    "order": 10,
+    "impact": 3,
+    "name": "Angel of the Cosmos",
+    "description": "It came from the stars, let it return to them."
+}

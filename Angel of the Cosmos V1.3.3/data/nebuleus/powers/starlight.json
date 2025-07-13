@@ -1,0 +1,32 @@
+{
+    "type": "origins:resource",
+    "min": 0,
+    "max": 1000,
+    "min_action": {
+        "type": "origins:play_sound",
+        "sound": "minecraft:block.dispenser.fail"
+    },
+    "max_action": {
+        "type": "origins:and",
+        "actions": [
+            {
+                "type": "origins:spawn_particles",
+                "particle": {
+                    "type": "minecraft:flash"
+                },
+                "count": 1
+            },
+            {
+                "type": "origins:play_sound",
+                "sound": "irons_spellbooks:spell.divine_smite.cast"
+            }
+        ]
+    },
+    "hud_render": {
+        "should_render": true,
+        "sprite_location": "origins:textures/gui/community/huang/resource_bar_01.png",
+        "bar_index": 19
+    },
+    "name": "Starlight",
+    "description": "Your hunger bar is replaced with Starlight. This is used for your powers, and recovers by being under the night sky, or in the End. Recovers faster at low HP."
+}

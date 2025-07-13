@@ -1,0 +1,65 @@
+{
+    "type": "origins:action_over_time",
+    "interval": 1,
+    "entity_action": {
+        "type": "origins:replace_inventory",
+        "item_condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:ingredient",
+                    "ingredient": {
+                        "item": "traveloptics:celestial_fragment"
+                    }
+                },
+                {
+                    "type": "origins:enchantment",
+                    "enchantment": "alexscaves:astral_transferring",
+                    "comparison": "==",
+                    "compare_to": 1
+                }
+            ]
+        },
+        "stack": {
+            "item": "minecraft:air"
+        },
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:and",
+                    "actions": [
+                        {
+                            "type": "origins:execute_command",
+                            "command": "resource change @s nebuleus:starlight 25"
+                        },
+                        {
+                            "type": "origins:play_sound",
+                            "sound": "minecraft:block.enchantment_table.use",
+                            "pitch": 2
+                        },
+                        {
+                            "type": "origins:spawn_particles",
+                            "particle": {
+                                "type": "minecraft:composter"
+                            },
+                            "count": 4
+                        },
+                        {
+                            "type": "origins:spawn_particles",
+                            "particle": {
+                                "type": "minecraft:electric_spark"
+                            },
+                            "count": 6
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    "condition": {
+        "type": "origins:origin",
+        "origin": "nebuleus:nebuleus",
+        "inverted": true
+    }
+}

@@ -1,0 +1,73 @@
+{
+    "type": "origins:conditioned_attribute",
+    "modifiers": [
+        {
+            "attribute": "generic.movement_speed",
+            "operation": "multiply_total",
+            "value": 0.2
+        },
+        {
+            "attribute": "attributeslib:armor_pierce",
+            "operation": "addition",
+            "value": 4
+        },
+        {
+            "attribute": "attributeslib:prot_pierce",
+            "operation": "addition",
+            "value": 4
+        },
+        {
+            "attribute": "attributeslib:crit_chance",
+            "operation": "multiply_total",
+            "value": 0.2
+        },
+        {
+            "attribute": "attributeslib:crit_damage",
+            "operation": "multiply_total",
+            "value": 0.2
+        },
+        {
+            "attribute": "attributeslib:dodge_chance",
+            "operation": "addition",
+            "value": 0.2
+        },
+        {
+            "attribute": "attributeslib:healing_received",
+            "operation": "multiply_total",
+            "value": 1
+        },
+        {
+            "attribute": "irons_spellbooks:cast_time_reduction",
+            "operation": "multiply_total",
+            "value": 0.2
+        },
+        {
+            "attribute": "irons_spellbooks:max_mana",
+            "operation": "multiply_total",
+            "value": 0.5
+        },
+        {
+            "attribute": "irons_spellbooks:mana_regen",
+            "operation": "multiply_total",
+            "value": 1
+        },
+        {
+            "attribute": "irons_spellbooks:spell_power",
+            "operation": "multiply_total",
+            "value": 0.2
+        },
+        {
+            "attribute": "irons_spellbooks:spell_resist",
+            "operation": "multiply_total",
+            "value": 0.2
+        }
+    ],
+    "tick_rate": 20,
+    "condition": {
+        "type": "origins:command",
+        "command": "execute if entity @e[tag = hypernova, distance = ..64]",
+        "comparison": ">",
+        "compare_to": 0
+    },
+    "hidden": true
+}
